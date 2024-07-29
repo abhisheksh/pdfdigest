@@ -16,7 +16,7 @@ def chat():
         
     
         if valid_pattern.match(user_input):
-            response = llm.invoke(user_input).content # If you are using Groq
+            response = llm.invoke(user_input) # If you are using Groq
         else:
             response = "Type something valid, bro."
         
