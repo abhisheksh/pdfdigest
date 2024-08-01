@@ -9,7 +9,7 @@ from langchain_community.vectorstores import Chroma
 import gradio as gr
 
 # 2. Parse PDF
-reader = PdfReader('./arso.pdf')
+reader = PdfReader('./sf24.pdf')
 text = ""
 for i in range(0, len(reader.pages)):
     page = reader.pages[i]
@@ -18,7 +18,7 @@ for i in range(0, len(reader.pages)):
 # 3. Split document
 documents = [Document(page_content=text, metadata={"source": "local"})]
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=200, chunk_overlap=40)
+    chunk_size=2000, chunk_overlap=500)
 all_splits = text_splitter.split_documents(documents)
 
 # 4. Setup the embeddings database
@@ -26,7 +26,7 @@ embedding_model = "mxbai-embed-large"
 embeddings = OllamaEmbeddings(model=embedding_model)
 collection = Chroma.from_documents(
     documents=all_splits, embedding=embeddings, persist_directory="doc_vectors")
-
+'''
 # 5. Add more items to the collection
 loader = WebBaseLoader(web_path=("https://mitrarobot.com/"))
 docs = loader.load()
@@ -34,8 +34,10 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=200, chunk_overlap=40)
 splits = text_splitter.split_documents(docs)
 
+
 for s in splits:
     collection.add_documents([s])
+'''
 
 # 6. Build a simple search
 

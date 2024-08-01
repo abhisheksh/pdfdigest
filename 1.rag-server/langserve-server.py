@@ -16,9 +16,9 @@ load_dotenv()
 
 # 1. Setup the FastAPI app
 app = FastAPI(
-    title="Modern AI Practitioner",
+    title="Salesforce Summer24 Guide",
     version="1.0",
-    description="For class coding",
+    description="Review Salesforce Summer24 Changes",
 )
 
 # Enable CORS
@@ -39,11 +39,11 @@ llm = ChatGroq(model_name="llama3-70b-8192")
 #llm = Ollama(model="gemma:2b")
 
 template = """
-Your name is Mitra. You are a customer service assistant for Modern AI Pro. 
-Kindly answer the customer request about this: {question}
-Stick to the main topic -- related to AI bootcamp -- and when something is not relevant
-gently prod the customer back to the conversation. Answer in 3 sentences or less 
-where possible. 
+Your name is Joe and you are a help bot. 
+Kindly answer request about this: {question}
+Stick to the main topic -- related to Salesforce Summer24 Release -- and when something is not relevant
+gently prod the user back to the conversation. Answer in detail and add as much information as possble.
+
 Use this context retrieved from the database: {context}
 
 """

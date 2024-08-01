@@ -1,2 +1,3 @@
 #Ignore all file that match below patterns
 *.env
+*.pem
